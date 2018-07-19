@@ -1,0 +1,57 @@
+<Window x:Class="CSharpCorrect.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:CSharpCorrect" xmlns:ns1="clr-namespace:AmmySidekick;assembly=AmmySidekick" ns1:Ammy.Register="/CSharpCorrect;component/MainWindow.g.xaml">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Border Margin="10" Padding="10" BorderBrush="Green" BorderThickness="3" AllowDrop="True">
+      <StackPanel MinHeight="100">
+        <TextBlock>Report code</TextBlock>
+        <TextBox>
+          <TextBox.Text>
+            <Binding Path="CorrectionCodeText" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ns0:MainWindow}}"/>
+          </TextBox.Text>
+        </TextBox>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock>Save corrected files</TextBlock>
+          <CheckBox>
+            <CheckBox.IsChecked>
+              <Binding Path="SaveModifiedFiles" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ns0:MainWindow}}"/>
+            </CheckBox.IsChecked>
+          </CheckBox>
+        </StackPanel>
+        <TextBlock Margin="10">Progres</TextBlock>
+        <ProgressBar x:Name="CorrectedProgressBar" Height="25">
+          <ProgressBar.Maximum>
+            <Binding Path="TotalFilesCount" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ns0:MainWindow}}"/>
+          </ProgressBar.Maximum>
+        </ProgressBar>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="Corrected statements "/>
+          <TextBlock>
+            <TextBlock.Text>
+              <Binding Path="CorrectedStatementsCount" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ns0:MainWindow}}"/>
+            </TextBlock.Text>
+          </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="Corrected files "/>
+          <TextBlock>
+            <TextBlock.Text>
+              <Binding Path="CorrectedFilesCount" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ns0:MainWindow}}"/>
+            </TextBlock.Text>
+          </TextBlock>
+          <TextBlock Text=" of "/>
+          <TextBlock>
+            <TextBlock.Text>
+              <Binding Path="TotalFilesCount" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ns0:MainWindow}}"/>
+            </TextBlock.Text>
+          </TextBlock>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+    <Border Grid.Row="1" Margin="10" Padding="10" BorderBrush="Green" BorderThickness="3" AllowDrop="True" Drop="DropCorrect" PreviewDragOver="DropPreview">
+      <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="26" FontFamily="Calibri">Drop files or folders here</TextBlock>
+    </Border>
+  </Grid>
+</Window>

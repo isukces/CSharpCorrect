@@ -1,0 +1,57 @@
+﻿mixin DropBorder(dropEvent, dropEvent2) for Border{
+	Margin: 10
+	Padding: 10
+	BorderBrush: Green	
+	BorderThickness: 3
+	AllowDrop: true
+	Drop: $dropEvent
+	PreviewDragOver: $dropEvent2
+}
+mixin DropLabel() for TextBlock{
+	VerticalAlignment: Center, HorizontalAlignment: Center 
+	FontSize: 26
+	FontFamily: "Calibri"
+}
+ 
+alias CorrectPanel() {
+	Border { #DropBorder(none,none)
+		StackPanel {  MinHeight: 100
+			TextBlock { "Report code" }
+			TextBox { Text: bind "CorrectionCodeText" from $ancestor<CSharpCorrect.MainWindow> }
+			@StackPanelHorizontal() {
+				TextBlock { "Save corrected files" }
+				CheckBox { IsChecked:  bind "SaveModifiedFiles" from $ancestor<CSharpCorrect.MainWindow> }
+			}
+
+			TextBlock { "Progres", Margin: 10}
+			ProgressBar "CorrectedProgressBar" { 
+				Height: 25
+				Maximum: bind "TotalFilesCount" from $ancestor<CSharpCorrect.MainWindow> 
+			}
+			@StackPanelHorizontal() {
+				TextBlock { Text: "Corrected statements "}
+				TextBlock { Text: bind "CorrectedStatementsCount"  from $ancestor<CSharpCorrect.MainWindow> }				
+			}
+			@StackPanelHorizontal() {
+				TextBlock { Text: "Corrected files "}
+				TextBlock { Text: bind "CorrectedFilesCount"  from $ancestor<CSharpCorrect.MainWindow> }
+				TextBlock { Text: " of "}
+				TextBlock { Text: bind "TotalFilesCount" from $ancestor<CSharpCorrect.MainWindow>}
+			}
+		}
+	}
+}
+
+Window "CSharpCorrect.MainWindow" {
+	Grid { 
+		#TwoRows("Auto","*")
+		@CorrectPanel{#Cell(none,none)}
+		Border{
+			#Cell(1)
+			#DropBorder("DropCorrect","DropPreview")
+			TextBlock { "Drop files or folders here" 
+				#DropLabel()
+			}			
+		}
+	}
+}

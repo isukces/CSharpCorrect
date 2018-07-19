@@ -1,0 +1,3 @@
+﻿Application "CSharpCorrect.App" {
+  StartupUri: "MainWindow.g.xaml"
+}
