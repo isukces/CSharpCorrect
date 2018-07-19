@@ -43,6 +43,9 @@ alias CorrectPanel() {
 }
 
 Window "CSharpCorrect.MainWindow" {
+	Title: "C# correct"
+	Width: 500
+	Height: 400
 	Grid { 
 		#TwoRows("Auto","*")
 		@CorrectPanel{#Cell(none,none)}

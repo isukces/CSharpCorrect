@@ -1,4 +1,4 @@
-<Window x:Class="CSharpCorrect.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:CSharpCorrect" xmlns:ns1="clr-namespace:AmmySidekick;assembly=AmmySidekick" ns1:Ammy.Register="/CSharpCorrect;component/MainWindow.g.xaml">
+<Window x:Class="CSharpCorrect.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:CSharpCorrect" xmlns:ns1="clr-namespace:AmmySidekick;assembly=AmmySidekick" Title="C# correct" Width="500" Height="400" ns1:Ammy.Register="/CSharpCorrect;component/MainWindow.g.xaml">
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
